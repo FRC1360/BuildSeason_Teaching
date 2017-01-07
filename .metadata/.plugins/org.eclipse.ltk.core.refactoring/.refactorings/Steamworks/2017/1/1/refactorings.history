@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 4 elements from project &apos;Steamworks&apos;&#x0A;- Original project: &apos;Steamworks&apos;&#x0A;- Original elements:&#x0A;     cscore.jar&#x0A;     NetworkTables.jar&#x0A;     opencv.jar&#x0A;     WPILib.jar" description="Delete elements" element1="WPILib.jar" element2="cscore.jar" element3="opencv.jar" element4="NetworkTables.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1483823983765" subPackages="false" version="1.0"/>
+</session>

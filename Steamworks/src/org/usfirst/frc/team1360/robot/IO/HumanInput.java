@@ -27,8 +27,21 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	
-	
+	public double getDriverForward(){
+		return this.driver.getLeftTrigger();
+	}
+	public double getDriverBackward(){
+		return this.driver.getRightTrigger();
+	}
+	public double getDriverTurn(){
+		return this.driver.getLeftXAxis();
+	}
+	public double getDriverLeftMove(){
+		return this.driver.getLeftYAxis();
+	}
+	public double getDriverRightMove(){
+		return this.driver.getRightYAxis();
+	}
 	//Operator Controls
 	
 	

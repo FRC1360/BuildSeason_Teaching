@@ -1,12 +1,21 @@
 package org.usfirst.frc.team1360.robot.IO;
 
+import edu.wpi.first.wpilibj.Victor;
+
 public class RobotOutput {
 	
 	private static  RobotOutput instance;
+	private Victor  driveLeftForward;
+	private Victor driveRightForward;
+	private Victor driveLeftBack;
+	private Victor driveRightBack;
 	
 	private RobotOutput()
 	{
-		
+		driveLeftForward = new Victor(0);
+		driveLeftBack = new Victor(1);
+		driveRightForward = new Victor(2);
+		driveRightBack = new Victor(3);
 	}
 	
 	public static RobotOutput getInstance()
@@ -19,8 +28,22 @@ public class RobotOutput {
 		return instance;
 	}
 	
+	public void tankDrive(double left, double right){
+		driveLeftForward.set(-left);
+		driveLeftBack.set(-left);
+		driveRightForward.set(right);
+		driveRightBack.set(right);
+	}
+	public void arcadeDrive(double speed,double turn){
+		double left = -(speed) - turn;
+		double right = -(speed) + turn;
+		tankDrive(left,right);
+	}
 	public void stopAll()
 	{
-		
+		driveLeftForward.set(0);
+		driveLeftBack.set(0);
+		driveRightBack.set(0);
+		driveRightForward.set(0);
 	}
 }

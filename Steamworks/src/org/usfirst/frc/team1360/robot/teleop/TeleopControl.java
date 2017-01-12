@@ -18,7 +18,6 @@ public class TeleopControl {
 		{
 			instance = new TeleopControl();
 		}
-		
 		return instance;
 	}
 	

@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
+    	System.out.println("Alexander Ma");
     }
     
 

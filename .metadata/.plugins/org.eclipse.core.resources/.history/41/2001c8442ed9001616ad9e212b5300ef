@@ -42,19 +42,9 @@ public class HumanInput {
 	public double getDriverRightMove(){
 		return this.driver.getRightYAxis();
 	}
-	public boolean getDriverActuate(){
-		return this.driver.getButtonA();
-	}
 	//Operator Controls
-	/*public double getOperatorIn(){
-		return this.operator.RightTrigger();
-	}*/
-	public double getOperatorIn(){
-		return this.operator.getRightTrigger();
-	}
-	public double getOperatorOut(){
-		return this.operator.getLeftTrigger();
-	}
+	
+	
 	//Auto Controls
 	 public boolean getAutonSetModeButton() 
 	 {

@@ -10,7 +10,7 @@ public class TeleopControl {
 	private TeleopControl()
 	{
 		this.components = new ArrayList<>();
-		this.components.add(TeleopShoot.getInstance());
+		this.components.add(TeleopDrive.getInstance());
 	}
 	
 	public static TeleopControl getInstance()

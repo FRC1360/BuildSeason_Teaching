@@ -30,19 +30,10 @@ public class TeleopDrive implements TeleopComponent {
 			turn=0;
 		}
 		this.robotOutput.arcadeDrive(speed,turn);*/
-		double speed = this.humanInput.getDriverLeftMove();
-		double turn = this.humanInput.getDriverTurn();
-		if (Math.abs(speed)<0.25){
-			speed=0;
-		}
-		if (Math.abs(turn)<0.25){
-			turn = 0;
-		}
-		this.robotOutput.arcadeDrive(speed,turn);
 	}
 	@Override
 	public void disable() {
-		this.robotOutput.arcadeDrive(0, 0);
+		/*this.robotOutput.arcadeDrive(0, 0);*/
 	}
 
 }

@@ -19,20 +19,20 @@ public class TeleopShoot implements TeleopComponent{
 	}
 	@Override
 	public void calculate() {
-		//double intake2 = this.humanInput.getOperatorIn();
-		//double outtake2 = this.humanInput.getOperatorOut();
-		//if (Math.abs(intake2)<0.1){
-			//intake2 = 0;
-		//}
-		//if (Math.abs(outtake2)<0.1){
-			//outtake2 = 0;
-		//}
-		//double difference = intake2-outtake2;
-		//this.robotOutput.InorOut(difference);
+		double intake2 = this.humanInput.getOperatorIn();
+		double outtake2 = this.humanInput.getOperatorOut();
+		if (Math.abs(intake2)<0.1){
+			intake2 = 0;
+		}
+		if (Math.abs(outtake2)<0.1){
+			outtake2 = 0;
+		}
+		double difference = intake2-outtake2;
+		this.robotOutput.InorOut(difference);
 		//this.robotOutput.InorOut(outtake2);
 	}
 	@Override
 	public void disable() {
-		//this.robotOutput.InorOut(0); 
+		this.robotOutput.InorOut(0);
 	}
 }

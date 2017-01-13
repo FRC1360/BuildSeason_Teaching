@@ -1,4 +1,4 @@
-Thu Jan 12 18:11:20 EST 2017
+Thu Jan 12 19:24:40 EST 2017
 ERROR org.eclipse.rse.core  Unexpected Exception
 java.net.UnknownHostException: Cathals-Mac.local: Cathals-Mac.local: nodename nor servname provided, or not known
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1475)
@@ -34,7 +34,7 @@ Caused by: java.net.UnknownHostException: Cathals-Mac.local: nodename nor servna
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1471)
 	... 25 more
 --------------------------------------------
-Thu Jan 12 18:11:26 EST 2017
+Thu Jan 12 19:24:46 EST 2017
 ERROR org.eclipse.rse.core  Unexpected Exception
 java.net.UnknownHostException: Cathals-Mac.local: Cathals-Mac.local: nodename nor servname provided, or not known
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1475)
@@ -51,7 +51,7 @@ Caused by: java.net.UnknownHostException: Cathals-Mac.local: nodename nor servna
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1471)
 	... 6 more
 --------------------------------------------
-Thu Jan 12 18:11:32 EST 2017
+Thu Jan 12 19:24:51 EST 2017
 ERROR org.eclipse.rse.core  Unexpected Exception
 java.net.UnknownHostException: Cathals-Mac.local: Cathals-Mac.local: nodename nor servname provided, or not known
 	at java.net.InetAddress.getLocalHost(InetAddress.java:1475)

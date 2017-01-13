@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.RobotOutput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.HumanInput"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Victor"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+</qualifiedTypeNameHistroy>

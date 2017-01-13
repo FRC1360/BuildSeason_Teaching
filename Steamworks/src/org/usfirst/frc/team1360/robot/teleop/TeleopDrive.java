@@ -21,20 +21,19 @@ public class TeleopDrive implements TeleopComponent {
 	}
 	@Override
 	public void calculate() {
-		double left = this.humanInput.getDriverLeftMove();
-		double right = this.humanInput.getDriverRightMove();
-		if (Math.abs(left)<0.1){
-			left=0;
+		double speed = this.humanInput.getDriverForward() - this.humanInput.getDriverBackward();
+		double turn = this.humanInput.getDriverTurn();
+		if (Math.abs(speed)<0.1){
+			speed=0;
 		}
-		if(Math.abs(right)<0.1){
-			right=0;
+		if(Math.abs(turn)<0.1){
+			turn=0;
 		}
-		this.robotOutput.tankDrive(left,right);
+		this.robotOutput.arcadeDrive(speed,turn);
 	}
-
 	@Override
 	public void disable() {
-		this.robotOutput.tankDrive(0, 0);
+		this.robotOutput.arcadeDrive(0, 0);
 	}
 
 }

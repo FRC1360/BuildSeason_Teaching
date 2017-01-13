@@ -39,6 +39,12 @@ public class RobotOutput {
 		double right = -(speed) + turn;
 		tankDrive(left,right);
 	}
+	public void Intake(){
+		
+	}
+	public void Outtake(){
+		
+	}
 	public void stopAll()
 	{
 		driveLeftForward.set(0);

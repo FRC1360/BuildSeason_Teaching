@@ -5,6 +5,7 @@ import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
+import org.usfirst.frc.team1360.robot.util.OrbitVision;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -17,7 +18,7 @@ public class Robot extends IterativeRobot {
 	private HumanInput humanInput;
 	private SensorInput sensorInput;
 	private TeleopControl teleopControl;
-	
+
 	
     public void robotInit() 
     {

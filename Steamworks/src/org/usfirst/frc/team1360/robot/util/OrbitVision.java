@@ -1,16 +1,15 @@
 package org.usfirst.frc.team1360.robot.util;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-
 import org.opencv.core.*;
-import org.opencv.features2d.*;
-import org.opencv.video.*;
 import org.opencv.videoio.*;
 
-import com.atul.JavaOpenCV.Imshow;
+
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
 import org.opencv.imgcodecs.*;
 import org.opencv.imgproc.*;
@@ -18,35 +17,55 @@ import org.opencv.imgproc.*;
 public class OrbitVision 
 {
 	private int lowThreshold = 125;
-	Mat src = Imgcodecs.imread("ggggg");
-	VideoCapture input = new VideoCapture("I think this is where you put the IP address?");
+	Mat src = Imgcodecs.imread("Filtered_Goal.png");
+	VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
 	Imshow im = new Imshow("LOL");
 
 	
 	//HSV values
-	private double HSub;
-	private double HAdd;
-	private double SSub;
-	private double SAdd;
-	private double VSub;
-	private double VAdd;
+	private double HSub = 170;
+	private double HAdd = 255;
+	private double SSub = 235;
+	private double SAdd = 255;
+	private double VSub = 29;
+	private double VAdd = 222;
 	
-	public OrbitVision(double HS, double HA, double SS, double SA, double VS, double VA)
+	public OrbitVision()
 	{
-		this.HSub = HS;
-		this.HAdd = HA;
-		this.SSub = SS;
-		this.SAdd = SA;
-		this.VSub = VS;
-		this.VAdd = VA;
+		
+	}
+	
+	//Put this in the robot init
+	public void CreateCamera()
+	{
+		new Thread(() ->
+		{
+			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+			camera.setResolution(680, 480);
+			
+			CvSink cvSink = CameraServer.getInstance().getVideo();
+			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 680, 480);
+			
+			Mat source = new Mat();
+			Mat output = new Mat();
+			
+			//If this doesnt work, try while(!Thread.interuppted)
+			while(true)
+			{
+				cvSink.grabFrame(source);
+				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
+				
+				outputStream.putFrame(output);
+			}
+			
+			
+		}).start();
 	}
 	
 	public void Calculate()
 	{
 		input.read(src);
 		Mat dst = new Mat();
-		int BlockSize = 1;
-		int kSize = 1;
 		
 		Scalar hsvLow = new Scalar(HSub, SSub, VSub);
 		Scalar hsvHigh = new Scalar(HAdd, SAdd, VAdd);
@@ -57,8 +76,7 @@ public class OrbitVision
 		List<MatOfPoint> contours2 = new ArrayList<MatOfPoint>();
 		
 		Mat mHierarchy = new Mat();
-		Vector<MatOfInt4> hierarchy;
-		Mat goalFiltered = Imgcodecs.imread("generic file name here");
+		Mat goalFiltered = Imgcodecs.imread("file you compare to");
 		Imgproc.cvtColor(goalFiltered, goalFiltered, Imgproc.COLOR_BGR2GRAY);
 		Imgproc.findContours(goalFiltered, contours1, mHierarchy, 2, 1);
 		Imgproc.findContours(dst, contours2, mHierarchy, 2, 1);

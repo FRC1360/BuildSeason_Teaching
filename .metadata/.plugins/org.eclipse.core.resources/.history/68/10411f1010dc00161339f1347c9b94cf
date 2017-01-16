@@ -141,7 +141,6 @@ public class OrbitVision
 				Imgproc.line(out, vtx[i], vtx[(i+1)%4], new Scalar(0, 128, 255), 3);
 			}
 			
-			//Wil this work?  Idk.  Hopefully. 
 			im.showImage(out);
 		}
 	}

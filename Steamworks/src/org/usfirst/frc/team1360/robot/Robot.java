@@ -1,11 +1,11 @@
 
 package org.usfirst.frc.team1360.robot;
 
+import org.usfirst.frc.team1360.auto.AutonControl;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.IO.SensorInput;
 import org.usfirst.frc.team1360.robot.teleop.TeleopControl;
-import org.usfirst.frc.team1360.robot.util.OrbitVision;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -31,7 +31,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() 
     {
-
+    	AutonControl.getInstance().initialize();
     }
 
     public void disabledInit()
@@ -43,11 +43,12 @@ public class Robot extends IterativeRobot {
     public void disabledPeriodic()
     {
     	this.sensorInput.calculate();
+    	AutonControl.getInstance().updateModes();
     }
 
     public void autonomousPeriodic()
     {
-    	
+    	AutonControl.getInstance().runCycle();
     }
 
 

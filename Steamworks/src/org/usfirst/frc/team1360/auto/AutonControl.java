@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
 import org.usfirst.frc.team1360.auto.mode.AutonMode;
 import org.usfirst.frc.team1360.auto.mode.DefaultMode;
+import org.usfirst.frc.team1360.auto.mode.step1.DriveThenShoot;
+import org.usfirst.frc.team1360.auto.mode.step1.DriveWhileShoot;
+import org.usfirst.frc.team1360.auto.mode.step1.JustDrive;
 import org.usfirst.frc.team1360.robot.IO.HumanInput;
 import org.usfirst.frc.team1360.robot.IO.RobotOutput;
 import org.usfirst.frc.team1360.robot.util.Debugger;
@@ -54,7 +57,9 @@ private static AutonControl instance;
         // --- STEP 1 SUBMODES
         ArrayList<AutonMode> step1 = this.autonSteps.get(0);
         step1.add(new DefaultMode());
-        
+        step1.add(new JustDrive());
+        step1.add(new DriveThenShoot());
+        step1.add(new DriveWhileShoot());
         
         // --- STEP 2 SUBMODES
         ArrayList<AutonMode> step2 = this.autonSteps.get(1);

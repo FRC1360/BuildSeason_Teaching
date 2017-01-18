@@ -1,0 +1,21 @@
+package org.usfirst.frc.team1360.newauto;
+
+import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+
+public class AutonDrive extends AutonBaseClass {
+	RobotOutput robotOutput;
+	
+	AutonDrive() {
+		robotOutput = RobotOutput.getInstance();
+	}
+
+	@Override
+	public void Run() {
+		
+	}
+
+	@Override
+	public void StopNow() {
+		
+	}
+}

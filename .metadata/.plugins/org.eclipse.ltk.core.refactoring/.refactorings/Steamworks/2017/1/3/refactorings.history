@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;org.usfirst.frc.team1360.newauto.AutonMode.java&apos; to &apos;AutonControl.java&apos;&#x0D;&#x0A;- Original project: &apos;Steamworks&apos;&#x0D;&#x0A;- Original element: &apos;org.usfirst.frc.team1360.newauto.AutonMode.java&apos;&#x0D;&#x0A;- Renamed element: &apos;org.usfirst.frc.team1360.newauto.AutonControl.java&apos;" description="Rename compilation unit &apos;AutonMode.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;org.usfirst.frc.team1360.newauto{AutonMode.java" name="AutonControl.java" references="false" stamp="1484617731945" version="1.0"/>
+</session>

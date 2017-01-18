@@ -28,6 +28,46 @@ public class HumanInput {
 	
 	//Driver Controls
 	
+	public double getDriverForward()
+	{
+		return this.driver.getRightTrigger();
+	}
+	
+	public double getDriverBackward()
+	{
+		return this.driver.getLeftTrigger();
+	}
+	
+	public double getDriverTurn()
+	{
+		return this.driver.getLeftXAxis();
+	}
+	
+	public double getDriveLeft()
+	{
+		return driver.getLeftYAxis();
+	}
+	
+	public double getDriveRight()
+	{
+		return driver.getRightYAxis();
+	}
+	
+	public double getIntakeIn()
+	{
+		return operator.getRightTrigger();
+	}
+	
+	public double getIntakeOut()
+	{
+		return operator.getLeftTrigger();
+	}
+	
+	public boolean getValvePushed()
+	{
+		return operator.getButtonA();
+	}
+	
 	
 	//Operator Controls
 	
@@ -64,5 +104,4 @@ public class HumanInput {
 	    this.autonDecreaseStepWasPressed = this.driver.getButtonLB();
 	    return result;
 	}
-	
 }

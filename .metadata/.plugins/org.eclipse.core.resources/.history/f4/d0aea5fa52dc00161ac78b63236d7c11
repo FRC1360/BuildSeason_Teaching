@@ -1,0 +1,17 @@
+package org.usfirst.frc.team1360.auto.step1;
+
+import org.usfirst.frc.team1360.auto.drive.AutonIntakeOut;
+import org.usfirst.frc.team1360.auto.drive.IntakeWait;
+import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
+import org.usfirst.frc.team1360.auto.mode.AutonMode;
+import org.usfirst.frc.team1360.auto.util.AutonWait;
+
+public class JustIntake implements AutonMode {
+
+	@Override
+	public void addToMode(AutonBuilder ab) {
+		ab.addCommand(new AutonIntakeOut(5000, 1));
+		ab.addCommand(new IntakeWait());
+		ab.addCommand(new AutonWait(5000));
+	}
+}

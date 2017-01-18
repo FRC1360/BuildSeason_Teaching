@@ -1,0 +1,42 @@
+package org.usfirst.frc.team1360.robot.teleop;
+
+import org.usfirst.frc.team1360.robot.IO.HumanInput;
+import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+
+public class TeleopDrive implements TeleopComponent {
+
+	private static TeleopDrive instance;
+	private RobotOutput robotOutput;
+	private HumanInput humanInput;
+	
+	public static TeleopDrive getInstance()
+	{
+		if (instance == null)
+			instance = new TeleopDrive();
+		
+		return instance;
+	}
+	
+	@Override
+	public void calculate() 
+	{
+		double speed = humanInput.getDriverForward() - humanInput.getDriverBackward();
+		double turn = humanInput.getDriverTurn();
+		
+		robotOutput.tankDrive(turn < 0.98 ? speed + turn : speed, turn > 0.98 ? speed - turn : speed);
+	}
+	
+	private TeleopDrive()
+	{
+		this.humanInput = HumanInput.getInstance();
+		this.robotOutput = RobotOutput.getInstance();
+	}
+
+	@Override
+	public void disable() 
+	{
+		robotOutput.tankDrive(0, 0);
+
+	}
+
+}

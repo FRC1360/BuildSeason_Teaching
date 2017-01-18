@@ -1,0 +1,59 @@
+package org.usfirst.frc.team1360.robot.IO;
+
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Victor;
+
+public class RobotOutput {
+	
+	private static  RobotOutput instance;
+	
+	public Victor driveLeft;
+	public Victor driveRight;
+	public Victor intakeRight;
+	public Victor intakeLeft;
+	public Solenoid Valve;
+	private boolean ejected = false;
+	
+	private RobotOutput()
+	{
+		driveLeft = new Victor(0);
+		driveRight = new Victor(1);
+		intakeRight = new Victor(2);
+		intakeLeft = new Victor(3);
+		Valve = new Solenoid(7);
+	}
+	
+	public static RobotOutput getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new RobotOutput();
+		}
+		
+		return instance;
+	}
+	
+	public void tankDrive(double left, double right)
+	{
+		driveLeft.set(-left);
+		driveRight.set(right);
+	}
+	
+	public void intake(double zoom, boolean isIn)
+	{
+		double speed = isIn ? zoom : -zoom;
+		intakeRight.set(speed);
+		intakeLeft.set(speed);
+	}
+	
+	public void switchSolenoidState()
+	{
+		Valve.set(!ejected);
+		ejected = !ejected;
+	}
+	
+	public void stopAll()
+	{
+		
+	}
+}

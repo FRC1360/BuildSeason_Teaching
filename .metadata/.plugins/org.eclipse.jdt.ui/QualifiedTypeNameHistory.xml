@@ -1,2 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Victor"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.HumanInput"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Solenoid"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.RobotSubsystems"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.AutonMode"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.AutonDriveForward"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.DriveWait"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.AutonIntakeOut"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.util.AutonWait"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.step1.JustIntake"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.step1.DriveShoot"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.AutonCommand"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.drive.IntakeWait"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.IO.RobotOutput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.newauto.AutonControl"/>
+</qualifiedTypeNameHistroy>

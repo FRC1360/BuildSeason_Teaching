@@ -1,0 +1,11 @@
+package org.usfirst.frc.team1360.newauto;
+
+import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+
+public class AutonMode {
+	RobotOutput robotOutput;
+	
+	AutonMode() {
+		robotOutput = RobotOutput.getInstance();
+	}
+}

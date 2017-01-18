@@ -1,0 +1,30 @@
+package org.usfirst.frc.team1360.auto.drive;
+
+import org.usfirst.frc.team1360.auto.AutonCommand;
+import org.usfirst.frc.team1360.auto.RobotSubsystems;
+import org.usfirst.frc.team1360.robot.IO.RobotOutput;
+
+public class AutonDriveForward extends AutonCommand {
+
+	private RobotOutput robotOutput;
+	double speed;
+	
+	public AutonDriveForward(long time, double speed) {
+		super(RobotSubsystems.DRIVE);
+		robotOutput = RobotOutput.getInstance();
+		this.speed = speed;
+	}
+
+	@Override
+	public boolean calculate() {
+		robotOutput.tankDrive(speed, speed);
+		return false;
+	}
+
+	@Override
+	public void override() {
+		robotOutput.tankDrive(0, 0);
+		
+	}
+
+}

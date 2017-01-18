@@ -1,0 +1,14 @@
+package org.usfirst.frc.team1360.auto.step1;
+
+import org.usfirst.frc.team1360.auto.drive.AutonDriveForward;
+import org.usfirst.frc.team1360.auto.mode.AutonBuilder;
+import org.usfirst.frc.team1360.auto.mode.AutonMode;
+
+public class JustDrive implements AutonMode {
+
+	@Override
+	public void addToMode(AutonBuilder ab) {
+		ab.addCommand(new AutonDriveForward(5000, 1));
+	}
+	
+}

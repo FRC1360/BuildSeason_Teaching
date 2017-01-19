@@ -10,7 +10,6 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.imgcodecs.*;
 import org.opencv.imgproc.*;
@@ -18,11 +17,9 @@ import org.opencv.imgproc.*;
 public class OrbitVision 
 {
 	private int lowThreshold = 125;
-	private String filename;
 	Mat src = Imgcodecs.imread("Filtered_Goal.png");
 	VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
-	
-	//Imshow im = new Imshow("LOL");
+	Imshow im = new Imshow("LOL");
 
 	
 	//HSV values
@@ -33,24 +30,9 @@ public class OrbitVision
 	private double VSub = 29;
 	private double VAdd = 222;
 	
-	/*private double HSub;
-	private double HAdd;
-	private double SSub;
-	private double SAdd;
-	private double VSub;
-	private double VAdd;*/
-	
-	public OrbitVision(/*double HSub, double HAdd, double SSub, double SAdd, double VSub, double VAdd*/)
+	public OrbitVision()
 	{
-		/*this.HSub = HSub;
-		this.HAdd = HAdd;
-		this.SSub = SSub;
-		this.SAdd = SAdd;
-		this.VSub = VSub;
-		this.VAdd = VAdd;*/
-		
-		SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
-		
+		int i = 1;
 	}
 	
 	//Put this in the robot init
@@ -160,7 +142,7 @@ public class OrbitVision
 			}
 			
 			//Wil this work?  Idk.  Hopefully. 
-			//im.showImage(out);
+			im.showImage(out);
 		}
 	}
 	

@@ -28,7 +28,6 @@ public class Robot extends IterativeRobot {
     	this.humanInput = HumanInput.getInstance();
     	this.teleopControl = TeleopControl.getInstance();
     	this.sensorInput = SensorInput.getInstance();
-    	this.orbitVision = new OrbitVision();
     }
     
 
@@ -53,6 +52,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic()
     {
     	AutonControl.getInstance().runCycle();
+    	this.orbitVision.Calculate();
     }
 
 

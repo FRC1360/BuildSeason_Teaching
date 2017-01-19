@@ -1072,3 +1072,57 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 07:21:41.280
 !MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:46:43.671
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:46:43.671
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:47:22.265
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:47:22.266
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:48:49.896
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:48:49.896
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:49:07.274
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:49:07.274
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:49:56.796
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:49:56.797
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:50:18.953
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:50:18.954
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:50:46.937
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:50:46.938
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:52:08.428
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 16:52:08.430
+!MESSAGE Targets: deploy, Mode: run
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 17:13:12.828
+!MESSAGE Running ant file: /Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/Steamworks/build.xml
+
+!ENTRY WPILib_Java_Robot_Development 1 0 2017-01-18 17:13:12.830
+!MESSAGE Targets: deploy, Mode: run

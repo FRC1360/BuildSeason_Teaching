@@ -76,8 +76,8 @@ public class OrbitVision
 		
 			Core.inRange(frame, hsvLow, hsvHigh, dst);
 			
-			//Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-			//Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+			Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+			Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			
 			outputStream.putFrame(dst);
 			

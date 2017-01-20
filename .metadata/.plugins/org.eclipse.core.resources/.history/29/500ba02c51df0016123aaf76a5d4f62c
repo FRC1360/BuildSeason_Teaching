@@ -23,15 +23,6 @@ public class OrbitVision
 	//Mat src = Imgcodecs.imread("Filtered_Goal.png");
 	CvSink src;
 	private static CvSource outputStream;
-	private Mat frame = new Mat();
-	private Mat dst = new Mat();
-	
-	
-	private List<MatOfPoint> contours1 = new ArrayList<MatOfPoint>();
-	private List<MatOfPoint> contours2 = new ArrayList<MatOfPoint>();
-	private Mat mHierarchy = new Mat();
-	private Mat goalFiltered; 
-	
 	//VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
 	
 	
@@ -39,12 +30,12 @@ public class OrbitVision
 
 	
 	//HSV values
-	private double HSub = 125;
+	private double HSub = 170;
 	private double HAdd = 255;
-	private double SSub = 75;
+	private double SSub = 235;
 	private double SAdd = 255;
-	private double VSub = 0;
-	private double VAdd = 150;
+	private double VSub = 29;
+	private double VAdd = 222;
 	
 	/*private double HSub;
 	private double HAdd;
@@ -58,7 +49,6 @@ public class OrbitVision
 		//CameraServer.getInstance().addAxisCamera("http://10.13.60.3/mjpg/video.mjpg");
 		CameraServer.getInstance().addAxisCamera("10.13.60.3");
 		outputStream = CameraServer.getInstance().putVideo("Awesome Video", 320, 240);
-		goalFiltered = Imgcodecs.imread("Filtered_Goal.png");
 		//SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
 	}
 
@@ -69,16 +59,20 @@ public class OrbitVision
 			src = CameraServer.getInstance().getVideo();
 			
 
-			 Scalar hsvLow = new Scalar(HSub, SSub, VSub);
-			 Scalar hsvHigh = new Scalar(HAdd, SAdd, VAdd);
-			
+			Mat frame = new Mat();
 			src.grabFrame(frame);
+			
 		
+			Mat dst = new Mat();
+		
+			Scalar hsvLow = new Scalar(HSub, SSub, VSub);
+			Scalar hsvHigh = new Scalar(HAdd, SAdd, VAdd);
+		
+			//Imgproc.cvtColor(src, dst, Imgproc.COLOR_BGR2HSV);
 			Core.inRange(frame, hsvLow, hsvHigh, dst);
 			
-			//Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-			//Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			
+		
 			outputStream.putFrame(dst);
 			
 			System.out.println("Running Vision");

@@ -23,5 +23,4 @@ INDEX VERSION 1.129+/Users/michaelgeddes/Documents/GitHub/BuildSeason_Teaching/.
 3297554335.index
 3097921803.index
 965335243.index
-2968020283.index
 489563832.index

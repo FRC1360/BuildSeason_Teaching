@@ -53,8 +53,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic()
     {
-    	orbitVision.Calculate();
-    	AutonControl.getInstance().runCycle();
+    	//orbitVision.Calculate();
+    	//AutonControl.getInstance().runCycle();
     }
 
 

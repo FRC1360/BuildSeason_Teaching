@@ -30,7 +30,7 @@ public class OrbitVision
 	private List<MatOfPoint> contours1 = new ArrayList<MatOfPoint>();
 	private List<MatOfPoint> contours2 = new ArrayList<MatOfPoint>();
 	private Mat mHierarchy = new Mat();
-	private Mat goalFiltered; 
+	private Mat goalFiltered = Imgcodecs.imread("Filtered_Goal.png");
 	
 	//VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
 	
@@ -58,7 +58,6 @@ public class OrbitVision
 		//CameraServer.getInstance().addAxisCamera("http://10.13.60.3/mjpg/video.mjpg");
 		CameraServer.getInstance().addAxisCamera("10.13.60.3");
 		outputStream = CameraServer.getInstance().putVideo("Awesome Video", 320, 240);
-		goalFiltered = Imgcodecs.imread("Filtered_Goal.png");
 		//SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
 	}
 
@@ -76,8 +75,8 @@ public class OrbitVision
 		
 			Core.inRange(frame, hsvLow, hsvHigh, dst);
 			
-			//Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-			//Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+			Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+			Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			
 			outputStream.putFrame(dst);
 			

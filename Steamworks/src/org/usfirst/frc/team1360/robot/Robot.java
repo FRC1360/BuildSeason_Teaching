@@ -48,11 +48,13 @@ public class Robot extends IterativeRobot {
     {
     	this.sensorInput.calculate();
     	AutonControl.getInstance().updateModes();
+
     }
 
     public void autonomousPeriodic()
     {
-    	AutonControl.getInstance().runCycle();
+    	orbitVision.Calculate();
+    	//AutonControl.getInstance().runCycle();
     }
 
 

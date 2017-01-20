@@ -8,6 +8,7 @@ import org.opencv.videoio.*;
 
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.MjpegServer;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,8 +20,11 @@ public class OrbitVision
 {
 	private int lowThreshold = 125;
 	private String filename;
-	Mat src = Imgcodecs.imread("Filtered_Goal.png");
-	VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
+	//Mat src = Imgcodecs.imread("Filtered_Goal.png");
+	CvSink src;
+	private static CvSource outputStream;
+	//VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
+	
 	
 	//Imshow im = new Imshow("LOL");
 
@@ -40,48 +44,41 @@ public class OrbitVision
 	private double VSub;
 	private double VAdd;*/
 	
-	public OrbitVision(/*double HSub, double HAdd, double SSub, double SAdd, double VSub, double VAdd*/)
+	public OrbitVision()
 	{
-		/*this.HSub = HSub;
-		this.HAdd = HAdd;
-		this.SSub = SSub;
-		this.SAdd = SAdd;
-		this.VSub = VSub;
-		this.VAdd = VAdd;*/
-		
-		SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
-		
+		//CameraServer.getInstance().addAxisCamera("http://10.13.60.3/mjpg/video.mjpg");
+		CameraServer.getInstance().addAxisCamera("10.13.60.3");
+		outputStream = CameraServer.getInstance().putVideo("Awesome Video", 320, 240);
+		//SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
 	}
-	
-	//Put this in the robot init
-	public void CreateCamera()
-	{
-		new Thread(() ->
-		{
-			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-			camera.setResolution(680, 480);
-			
-			CvSink cvSink = CameraServer.getInstance().getVideo();
-			CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 680, 480);
-			
-			Mat source = new Mat();
-			Mat output = new Mat();
-			
-			//If this doesnt work, try while(!Thread.interuppted)
-			while(true)
-			{
-				cvSink.grabFrame(source);
-				Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-				
-				outputStream.putFrame(output);
-			}
-			
-			
-		}).start();
-	}
+
 	
 	public void Calculate()
 	{
+		
+			src = CameraServer.getInstance().getVideo();
+			
+
+			Mat frame = new Mat();
+			src.grabFrame(frame);
+			
+		
+			Mat dst = new Mat();
+		
+			Scalar hsvLow = new Scalar(HSub, SSub, VSub);
+			Scalar hsvHigh = new Scalar(HAdd, SAdd, VAdd);
+		
+			//Imgproc.cvtColor(src, dst, Imgproc.COLOR_BGR2HSV);
+			Core.inRange(frame, hsvLow, hsvHigh, dst);
+			
+			
+		
+			outputStream.putFrame(dst);
+			
+			System.out.println("Running Vision");
+			
+		
+		/*
 		input.read(src);
 		Mat dst = new Mat();
 		
@@ -123,6 +120,8 @@ public class OrbitVision
 				index = i;
 				largest = (int) size;
 			}
+			
+			System.out.print("1");
 		}
 		
 		Mat out = new Mat();
@@ -143,8 +142,8 @@ public class OrbitVision
 			
 			
 			/* Because Java is stupid, I have to take contours2, and put it into a
-			* new 32 bit Mat because reasons an f*ck java - opencv
-			*/
+			// new 32 bit Mat because reasons an f*ck java - opencv
+			
 			List<MatOfPoint2f> newMat = new ArrayList<MatOfPoint2f>();
 			((Mat) contours2).convertTo((Mat) newMat, CvType.CV_32F);
 			
@@ -162,6 +161,7 @@ public class OrbitVision
 			//Wil this work?  Idk.  Hopefully. 
 			//im.showImage(out);
 		}
+			*/
 	}
 	
 	

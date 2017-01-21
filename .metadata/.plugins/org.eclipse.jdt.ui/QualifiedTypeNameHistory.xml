@@ -28,6 +28,7 @@
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.shoot.AutonShoot"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.util.AutonWait"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.auto.mode.step1.DriveWhileShoot"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.OrbitVision"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
+<fullyQualifiedTypeName name="edu.wpi.cscore.MjpegServer"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.OrbitVision"/>
 </qualifiedTypeNameHistroy>

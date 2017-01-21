@@ -31,8 +31,9 @@ public class OrbitVision
 	private List<MatOfPoint> contours2 = new ArrayList<MatOfPoint>();
 	private Mat mHierarchy = new Mat();
 	private Mat otherMat = new Mat(); 
-	private double offset = 2000;
+	private double offset = 3000;
 	private int index = 0;
+	private int index2 = 0;
 	
 	List<MatOfPoint2f> newMat = new ArrayList<MatOfPoint2f>(); //this is new
 	
@@ -43,9 +44,9 @@ public class OrbitVision
 
 	
 	//HSV values
-	private double HSub = 90;
+	private double HSub = 110;
 	private double HAdd = 250;
-	private double SSub = 160;
+	private double SSub = 190;
 	private double SAdd = 255;
 	private double VSub = 0;
 	private double VAdd = 25;
@@ -87,20 +88,19 @@ public class OrbitVision
 			//Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			Imgproc.findContours(otherMat, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			
-			System.out.println("Before the rio crashes" + contours2.size());
 			
 			for(int i = 0; i < contours2.size(); i++)
 			{
 				double width = Imgproc.boundingRect(contours2.get(i)).width;
 				double height = Imgproc.boundingRect(contours2.get(i)).height;
 				
-				if(width*height < 1000000)
+				if(width * height < 2822.0)
 				{
+					System.out.println(width*height);
 					contours2.remove(i);
-				
+					
 				}
 			}
-			System.out.println("After the rorborio crashes" + contours2.size());
 			
 			
 			for(int i = 0; i < contours2.size(); i++)
@@ -115,30 +115,47 @@ public class OrbitVision
 					offset = height / width;
 				}
 				
-				/*this stuff is new*/
-				if (index > -1)
+				if((Math.abs(width / height) - 2.5) < offset && i != index)
 				{
-					int x = Imgproc.boundingRect(contours2.get(index)).x;
-					int y = Imgproc.boundingRect(contours2.get(index)).y;
-					
-					Imgproc.rectangle(frame, new Point(x, y), new Point(x + width, y + height), new Scalar(255, 0, 255));
-					
-					/*
-					((Mat) contours2).convertTo((Mat) newMat, CvType.CV_32F);
-					ArrayList<MatOfPoint> secondMat = new ArrayList<MatOfPoint>(CvType.CV_32F);
-					
-					RotatedRect rect = Imgproc.minAreaRect((MatOfPoint2f) newMat.get(index));
-					
-					Point[] vtx = new Point[4];
-					
-					rect.points(vtx);
-					
-					for (int j = 0; i < 4; i++)
-					{
-						Imgproc.line(frame, vtx[i], vtx[(j+1)%4], new Scalar(0, 128, 255), 3);
-					}
-					*/
+					index2 = i;
 				}
+				
+				/*this stuff is new*/
+			}
+			
+			if (index > -1)
+			{
+				int x = Imgproc.boundingRect(contours2.get(index)).x;
+				int y = Imgproc.boundingRect(contours2.get(index)).y;
+				
+				int width = Imgproc.boundingRect(contours2.get(index)).width;
+				int height = Imgproc.boundingRect(contours2.get(index)).height;
+				
+				int x2 = Imgproc.boundingRect(contours2.get(index2)).x;
+				int y2 = Imgproc.boundingRect(contours2.get(index2)).y;
+				
+				int width2 = Imgproc.boundingRect(contours2.get(index2)).width;
+				int height2 = Imgproc.boundingRect(contours2.get(index2)).height;
+				
+				
+				Imgproc.rectangle(frame, new Point(x, y), new Point(x + width, y + height), new Scalar(0, 100, 100), 5);
+				Imgproc.rectangle(frame, new Point(x2, y2), new Point(x2 + width2, y2 + height2), new Scalar(100, 100, 100), 5);
+				
+				/*
+				((Mat) contours2).convertTo((Mat) newMat, CvType.CV_32F);
+				ArrayList<MatOfPoint> secondMat = new ArrayList<MatOfPoint>(CvType.CV_32F);
+				
+				RotatedRect rect = Imgproc.minAreaRect((MatOfPoint2f) newMat.get(index));
+				
+				Point[] vtx = new Point[4];
+				
+				rect.points(vtx);
+				
+				for (int j = 0; i < 4; i++)
+				{
+					Imgproc.line(frame, vtx[i], vtx[(j+1)%4], new Scalar(0, 128, 255), 3);
+				}
+				*/
 			}
 			
 			System.out.println(index);

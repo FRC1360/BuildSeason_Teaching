@@ -30,7 +30,11 @@ public class OrbitVision
 	private List<MatOfPoint> contours1 = new ArrayList<MatOfPoint>();
 	private List<MatOfPoint> contours2 = new ArrayList<MatOfPoint>();
 	private Mat mHierarchy = new Mat();
-	private Mat goalFiltered; 
+	private Mat otherMat = new Mat(); 
+	private double offset = 2000;
+	private int index = 0;
+	
+	List<MatOfPoint2f> newMat = new ArrayList<MatOfPoint2f>(); //this is new
 	
 	//VideoCapture input = new VideoCapture("http://10.13.60.3/mjpg/video.mjpg");
 	
@@ -39,12 +43,12 @@ public class OrbitVision
 
 	
 	//HSV values
-	private double HSub = 125;
-	private double HAdd = 255;
-	private double SSub = 75;
+	private double HSub = 90;
+	private double HAdd = 250;
+	private double SSub = 160;
 	private double SAdd = 255;
 	private double VSub = 0;
-	private double VAdd = 150;
+	private double VAdd = 25;
 	
 	/*private double HSub;
 	private double HAdd;
@@ -58,13 +62,15 @@ public class OrbitVision
 		//CameraServer.getInstance().addAxisCamera("http://10.13.60.3/mjpg/video.mjpg");
 		CameraServer.getInstance().addAxisCamera("10.13.60.3");
 		outputStream = CameraServer.getInstance().putVideo("Awesome Video", 320, 240);
-		goalFiltered = Imgcodecs.imread("Filtered_Goal.png");
+		//goalFiltered = Imgcodecs.imread("Filtered_Goal.png", Imgcodecs.CV_LOAD_IMAGE_COLOR);
 		//SmartDashboard.putString("Camera Server", "http://10.13.60.3/mjpg/video.mjpg");
 	}
 
 	
 	public void Calculate()
 	{
+		
+			contours2.clear();
 		
 			src = CameraServer.getInstance().getVideo();
 			
@@ -73,15 +79,80 @@ public class OrbitVision
 			 Scalar hsvHigh = new Scalar(HAdd, SAdd, VAdd);
 			
 			src.grabFrame(frame);
-		
+			
 			Core.inRange(frame, hsvLow, hsvHigh, dst);
 			
+			dst.copyTo(otherMat);
+			
 			//Imgproc.findContours(goalFiltered, contours1, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
-			//Imgproc.findContours(dst, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
+			Imgproc.findContours(otherMat, contours2, mHierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE);
 			
-			outputStream.putFrame(dst);
+			System.out.println("Before the rio crashes" + contours2.size());
 			
-			System.out.println("Running Vision");
+			for(int i = 0; i < contours2.size(); i++)
+			{
+				double width = Imgproc.boundingRect(contours2.get(i)).width;
+				double height = Imgproc.boundingRect(contours2.get(i)).height;
+				
+				if(width*height < 1000000)
+				{
+					contours2.remove(i);
+				
+				}
+			}
+			System.out.println("After the rorborio crashes" + contours2.size());
+			
+			
+			for(int i = 0; i < contours2.size(); i++)
+			{
+				double width = Imgproc.boundingRect(contours2.get(i)).width;
+				double height = Imgproc.boundingRect(contours2.get(i)).height;
+				
+				if((Math.abs(width / height) - 2.5) < offset)
+				{
+					index = i;
+					//offset = width / height;
+					offset = height / width;
+				}
+				
+				/*this stuff is new*/
+				if (index > -1)
+				{
+					int x = Imgproc.boundingRect(contours2.get(index)).x;
+					int y = Imgproc.boundingRect(contours2.get(index)).y;
+					
+					Imgproc.rectangle(frame, new Point(x, y), new Point(x + width, y + height), new Scalar(255, 0, 255));
+					
+					/*
+					((Mat) contours2).convertTo((Mat) newMat, CvType.CV_32F);
+					ArrayList<MatOfPoint> secondMat = new ArrayList<MatOfPoint>(CvType.CV_32F);
+					
+					RotatedRect rect = Imgproc.minAreaRect((MatOfPoint2f) newMat.get(index));
+					
+					Point[] vtx = new Point[4];
+					
+					rect.points(vtx);
+					
+					for (int j = 0; i < 4; i++)
+					{
+						Imgproc.line(frame, vtx[i], vtx[(j+1)%4], new Scalar(0, 128, 255), 3);
+					}
+					*/
+				}
+			}
+			
+			System.out.println(index);
+			
+
+			
+			//Imgproc.drawContours(frame, contours2, index, new Scalar(50, 100, 255), 5);
+			
+			
+			//outputStream.putFrame(dst);
+			outputStream.putFrame(frame);
+			
+			//System.out.println("Running Vision");
+			
 			
 		
 		/*

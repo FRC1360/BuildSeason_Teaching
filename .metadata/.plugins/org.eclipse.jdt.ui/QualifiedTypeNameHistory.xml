@@ -8,7 +8,6 @@
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="org.opencv.core.Core"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
 <fullyQualifiedTypeName name="com.atul.JavaOpenCV.Imshow"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.CameraServer"/>
@@ -31,4 +30,5 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 <fullyQualifiedTypeName name="edu.wpi.cscore.MjpegServer"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team1360.robot.util.OrbitVision"/>
+<fullyQualifiedTypeName name="org.opencv.core.Core"/>
 </qualifiedTypeNameHistroy>

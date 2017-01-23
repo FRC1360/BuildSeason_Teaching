@@ -60,10 +60,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopPeriodic()
     {
-    	if(this.humanInput.startVision())
-    	{
-    		orbitVision.Calculate();
-    	}
+    	if(this.humanInput.getD)
     	
         this.sensorInput.calculate();
         this.teleopControl.runCycle();

@@ -27,10 +27,6 @@ public class HumanInput {
 	}
 	
 	//Driver Controls
-	public boolean startVision()
-	{
-		return this.driver.getButtonA();
-	}
 	
 	
 	//Operator Controls

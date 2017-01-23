@@ -18,6 +18,8 @@ import org.opencv.imgproc.*;
 
 public class OrbitVision 
 {
+	private int lowThreshold = 125;
+	private String filename;
 	CvSink src;
 	private static CvSource outputStream;
 	private static CvSource bwStream;

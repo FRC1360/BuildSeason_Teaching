@@ -39,7 +39,7 @@ public class OrbitVision
 	
 	//HSV values
 	private double HSub = 110; //110
-	private double HAdd = 225; //255
+	private double HAdd = 180; //255
 	private double SSub = 200; //190
 	private double SAdd = 255; //255
 	private double VSub = 0;  //0
